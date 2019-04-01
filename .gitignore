@@ -1,0 +1,10 @@
+# System files
+.DS_Store
+notes/
+
+# Node
+node_modules
+package-lock.json
+
+# VSCode
+.vscode/
