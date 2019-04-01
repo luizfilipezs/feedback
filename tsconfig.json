@@ -1,0 +1,21 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "outDir": "lib",
+        "allowJs": true
+    },
+    "typeRoots": [
+        "./node_modules/@types"
+    ],
+    "types":[
+        "jquery"
+    ],
+    "include": [
+        "js/main.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
