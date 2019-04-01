@@ -1,0 +1,35 @@
+{
+  "name": "feedback",
+  "version": "1.0.0",
+  "description": "Um modelo a ser utilizado em qualquer tipo de lojas para receber o feedback dos clientes após sua experiência.",
+  "main": "index.js",
+  "scripts": {
+    "scss": "node-sass --watch scss/style.scss css/style.css --output-style=expanded",
+    "ts": "tsc js/main.ts --watch",
+    "browserify": "watchify js/main.js -o js/bundle.js",
+    "build": "concurrently --kill-others \"npm run ts\" \"npm run browserify\" \"npm run scss\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luizfilipezs/feedback.git"
+  },
+  "keywords": [
+    "feedback",
+    "customers"
+  ],
+  "author": "Luiz Filipe da Silva",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luizfilipezs/feedback/issues"
+  },
+  "homepage": "https://github.com/luizfilipezs/feedback#readme",
+  "dependencies": {
+    "node-sass": "^4.11.0",
+    "@types/node": "^11.11.3",
+    "typescript": "^3.3.3333"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.3.29",
+    "concurrently": "^4.1.0"
+  }
+}
