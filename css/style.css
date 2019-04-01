@@ -1,0 +1,78 @@
+/* Feedback v1.0.0 */
+@import url("https://fonts.googleapis.com/css?family=Mada:200,300,400,500,600,700,900");
+* {
+  margin: 0em auto;
+  padding: 0em;
+  position: relative;
+}
+
+body {
+  padding: 10em 15% 0em 15%;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #fff;
+  font-family: "Mada", sans-serif;
+  font-size: 62.5%;
+  color: #5e1212;
+}
+
+h1 {
+  font-size: 7.5em;
+  font-weight: bold;
+  text-align: left;
+}
+
+.interactive-button {
+  margin-top: 1.7em;
+  margin-left: 0em;
+  padding: 0.1em;
+  border: 0.1em solid #5e1212;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+  cursor: pointer;
+  background-color: #fff;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  font-size: 6.75em;
+  font-weight: 900;
+  text-align: center;
+}
+
+.interactive-button:hover {
+  background-color: #5e1212;
+  color: #fff;
+}
+
+/* Media Queries */
+@media (max-width: 1600px) {
+  body {
+    font-size: 60%;
+  }
+}
+
+@media (max-width: 1366px) {
+  body {
+    font-size: 57.5%;
+  }
+}
+
+@media (max-width: 960px) {
+  body {
+    padding: 8em 10% 0em 10%;
+    font-size: 52%;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding-top: 7em;
+    font-size: 45%;
+  }
+}
