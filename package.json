@@ -1,7 +1,7 @@
 {
   "name": "feedback",
   "version": "1.0.0",
-  "description": "Um modelo a ser utilizado em qualquer tipo de lojas para receber o feedback dos clientes após sua experiência.",
+  "description": "A template that can be used in any type of store to get feedback from customers after their experience with it.",
   "main": "index.js",
   "scripts": {
     "scss": "node-sass --watch scss/style.scss css/style.css --output-style=expanded",
@@ -15,6 +15,7 @@
   },
   "keywords": [
     "feedback",
+    "store",
     "customers"
   ],
   "author": "Luiz Filipe da Silva",
@@ -25,7 +26,6 @@
   "homepage": "https://github.com/luizfilipezs/feedback#readme",
   "dependencies": {
     "node-sass": "^4.11.0",
-    "@types/node": "^11.11.3",
     "typescript": "^3.3.3333"
   },
   "devDependencies": {
