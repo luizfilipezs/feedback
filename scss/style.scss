@@ -19,7 +19,7 @@ body {
     //text properties
     font-family: $font;
     font-size: 62.5%;
-    color: $theme;
+    color: $secondary;
 }
 
 h1 {
@@ -35,6 +35,10 @@ h1 {
     padding: 10em 15% 0em 15%;
     overflow: auto;
     display: none;
+    background-color: $theme;
+}
+#final-screen {
+    color: $theme;
     background-color: $secondary;
 }
 

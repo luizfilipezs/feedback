@@ -16,7 +16,7 @@ body {
   background-color: #fff;
   font-family: "Mada", sans-serif;
   font-size: 62.5%;
-  color: #fff;
+  color: #5e1212;
 }
 
 h1 {
@@ -32,6 +32,11 @@ h1 {
   padding: 10em 15% 0em 15%;
   overflow: auto;
   display: none;
+  background-color: #fff;
+}
+
+#final-screen {
+  color: #fff;
   background-color: #5e1212;
 }
 
