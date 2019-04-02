@@ -1,9 +1,10 @@
 /* Feedback v1.0.0 */
 @import url("https://fonts.googleapis.com/css?family=Mada:200,300,400,500,600,700,900");
 * {
-  margin: 0em auto;
-  padding: 0em;
+  margin: 0 auto;
+  padding: 0;
   position: relative;
+  outline: 0;
 }
 
 body {
@@ -19,6 +20,17 @@ body {
   color: #5e1212;
 }
 
+#control-panel {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #5e1212;
+  display: none;
+}
+
 h1 {
   font-size: 7.5em;
   font-weight: bold;
@@ -29,7 +41,7 @@ h1 {
   width: 70%;
   min-height: calc(100vh - 10em);
   height: auto;
-  padding: 10em 15% 0em 15%;
+  padding: 10em 15% 0 15%;
   overflow: auto;
   display: none;
   background-color: #fff;
@@ -142,7 +154,7 @@ h1 {
   .wrapper {
     width: 80%;
     min-height: calc(100vh - 8em);
-    padding: 8em 10% 0em 10%;
+    padding: 8em 10% 0 10%;
   }
 }
 
