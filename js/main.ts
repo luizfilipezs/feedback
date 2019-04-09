@@ -138,7 +138,7 @@ class App {
                             score: 0
                         });
                     }
-                    let Q = new Question(newId(this.questions) ,asking, answers);
+                    let Q = new Question(newId(this.questions), asking, answers);
                     all_questions.push(Q);
                     if (!this.questions.some(e => e.asking === asking))
                         this.questions.push(Q);
@@ -159,7 +159,6 @@ class App {
     saveChanges(): void {
         localStorage.setItem("feedback", JSON.stringify(this));
     }
-    
 }
 
 var app: App = new App();
