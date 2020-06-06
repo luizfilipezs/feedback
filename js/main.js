@@ -1,8 +1,9 @@
 /* Feedback v1.0.0 */
 // Animation between screen swap
-var screens = $(".wrapper"), currentScreen = 0;
+var screens = $(".wrapper");
+var currentScreen = 0;
 function showScreen() {
-    (currentScreen === screens.length - 1) ? currentScreen = 0 : currentScreen++;
+    currentScreen === screens.length - 1 ? currentScreen = 0 : currentScreen++;
     var toHide = (currentScreen > 0) ? currentScreen - 1 : screens.length - 1;
     $(screens[toHide]).fadeOut(500);
     $(screens[currentScreen]).fadeIn(700);
@@ -16,10 +17,7 @@ document.addEventListener('touchstart', handleTouchStart, false);
 document.addEventListener('touchmove', handleTouchMove, false);
 var xDown = null;
 var yDown = null;
-function getTouches(evt) {
-    return evt.touches || // browser API
-        evt.originalEvent.touches; // jQuery
-}
+var getTouches = function (evt) { return evt.touches || evt.originalEvent.touches; }; // browser API or jQuery       
 function handleTouchStart(evt) {
     var firstTouch = getTouches(evt)[0];
     xDown = firstTouch.clientX;
@@ -58,9 +56,7 @@ function handleTouchMove(evt) {
 }
 ;
 // Generate ID
-function randNum() {
-    return Math.floor(Math.random() * 99999999999);
-}
+var randNum = function () { return Math.floor(Math.random() * 99999999999); };
 function newId(arr) {
     var id = randNum().toString();
     for (var i = 0; i < arr.length; i++) {
@@ -72,8 +68,8 @@ function newId(arr) {
     return id;
 }
 var Question = /** @class */ (function () {
-    function Question(ID, asking, answers) {
-        this.id = ID;
+    function Question(id, asking, answers) {
+        this.id = id;
         this.asking = asking;
         this.answers = answers;
     }
@@ -87,12 +83,11 @@ var App = /** @class */ (function () {
                 questions: []
             }));
         var db = JSON.parse(localStorage.getItem("feedback"));
-        for (var property in db) {
+        for (var property in db)
             this[property] = db[property];
-        }
         // Check HTML code to get new questions and save in on localStorage
-        var blocks = document.getElementsByClassName("wrapper");
-        var all_questions = new Array();
+        var blocks = Array.from(document.getElementsByClassName("wrapper"));
+        var all_questions = [];
         for (var _i = 0, blocks_1 = blocks; _i < blocks_1.length; _i++) {
             var block = blocks_1[_i];
             var _loop_1 = function (child) {
@@ -105,7 +100,7 @@ var App = /** @class */ (function () {
                     }
                 }
                 if (isAQuestion) {
-                    var asking_1 = block.children[0].innerHTML, answers = new Array();
+                    var asking_1 = block.children[0].innerHTML, answers = [];
                     for (var _b = 0, _c = child.children; _b < _c.length; _b++) {
                         var awr = _c[_b];
                         answers.push({

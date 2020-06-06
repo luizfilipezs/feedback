@@ -2,21 +2,21 @@
 
 // Animation between screen swap
 
-var screens: JQuery<HTMLElement> = $(".wrapper"),
-    currentScreen: number = 0;
+var screens = $(".wrapper");
+var currentScreen = 0;
 
-function showScreen(): void {
-    (currentScreen === screens.length - 1) ? currentScreen = 0 : currentScreen++;
-    var toHide: number = (currentScreen > 0) ? currentScreen - 1 : screens.length - 1;
+function showScreen() {
+    currentScreen === screens.length - 1 ? currentScreen = 0 : currentScreen++;
+    var toHide = (currentScreen > 0) ? currentScreen - 1 : screens.length - 1;
+
     $(screens[toHide]).fadeOut(500);
     $(screens[currentScreen]).fadeIn(700);
-    if (currentScreen === screens.length - 1)
-        setTimeout(showScreen, 7500);
+
+    if (currentScreen === screens.length - 1) setTimeout(showScreen, 7500);
 }
 
 $(".interactive-button").on("click", showScreen);
 $(".blocks").on("click", showScreen);
-
 
 // Swipe listeners
 
@@ -26,23 +26,20 @@ document.addEventListener('touchmove', handleTouchMove, false);
 var xDown = null;                                                        
 var yDown = null;
 
-function getTouches(evt) {
-  return evt.touches ||             // browser API
-         evt.originalEvent.touches; // jQuery
-}                                                     
+const getTouches = evt => evt.touches || evt.originalEvent.touches; // browser API or jQuery       
 
 function handleTouchStart(evt) {
-    const firstTouch = getTouches(evt)[0];                                      
-    xDown = firstTouch.clientX;                                      
-    yDown = firstTouch.clientY;                                      
-};                                                
+    const firstTouch = getTouches(evt)[0];
+    xDown = firstTouch.clientX;
+    yDown = firstTouch.clientY;
+};
 
 function handleTouchMove(evt) {
     if ( ! xDown || ! yDown ) {
         return;
     }
 
-    var xUp = evt.touches[0].clientX;                                    
+    var xUp = evt.touches[0].clientX;
     var yUp = evt.touches[0].clientY;
 
     var xDiff = xDown - xUp;
@@ -71,9 +68,7 @@ function handleTouchMove(evt) {
 
 // Generate ID
 
-function randNum(): number {
-    return Math.floor(Math.random() * 99999999999);
-}
+const randNum = () => Math.floor(Math.random() * 99999999999);
 
 function newId(arr: any[]): string {
     var id: string = randNum().toString();
@@ -95,14 +90,18 @@ interface answer {
 }
 
 class Question {
-    public id: string;
-    public asking: string;
-    public answers: answer[];
-    constructor(ID: string,asking: string, answers: answer[]) {
-        this.id = ID;
-        this.asking = asking;
-        this.answers = answers;
-    }
+    constructor(
+        public id: string,
+        public asking: string,
+        public answers: answer[]
+    ) { }
+}
+
+/**
+ * Prevent errors using `Array.from()` method
+ */
+interface ArrayConstructor {
+    from(arrayLike: any, mapFn?, thisArg?): Array<any>;
 }
 
 class App {
@@ -113,13 +112,16 @@ class App {
             localStorage.setItem("feedback", JSON.stringify({
                 questions: []
             }));
+        
         const db: object = JSON.parse(localStorage.getItem("feedback"));
-        for (let property in db) {
+
+        for (let property in db)
             this[property] = db[property];
-        }
+
         // Check HTML code to get new questions and save in on localStorage
-        const blocks: HTMLCollection = document.getElementsByClassName("wrapper");
-        var all_questions: Question[] = new Array();
+        const blocks = Array.from(document.getElementsByClassName("wrapper"));
+        var all_questions: Question[] = [];
+        
         for (let block of blocks) {
             for (let child of block.children) {
                 let isAQuestion: boolean = false;
@@ -130,8 +132,9 @@ class App {
                     }
                 }
                 if (isAQuestion) {
-                    let asking: string = block.children[0].innerHTML,
-                        answers: answer[] = new Array();
+                    let asking = block.children[0].innerHTML,
+                        answers: answer[] = [];
+
                     for (let awr of child.children) {
                         answers.push({
                             option: awr.textContent,
@@ -156,9 +159,9 @@ class App {
             }
         }
     }
-    saveChanges(): void {
+    saveChanges() {
         localStorage.setItem("feedback", JSON.stringify(this));
     }
 }
 
-var app: App = new App();
+var app = new App();
